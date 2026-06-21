@@ -1,0 +1,135 @@
+/* TEMA GITHUB DARK / ADMIN BLUE */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0d1117; 
+    color: #e6edf3;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #0a192f; /* Biru tua gelap */
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+}
+
+.nav-left h1 { color: #58a6ff; font-size: 22px; }
+.nav-left p { color: #8b949e; font-size: 12px; }
+
+.btn-back {
+    background: #161b22;
+    color: #e6edf3;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* FILTER */
+.filter-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-filter {
+    text-decoration: none;
+    padding: 12px 24px;
+    background: #161b22;
+    color: #8b949e;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-filter.active {
+    background: #0a192f;
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+/* TABLE CARD */
+.table-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead { background-color: #0a192f; }
+
+th {
+    text-align: left;
+    padding: 15px;
+    color: #58a6ff;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #30363d;
+    font-size: 15px;
+}
+
+/* DECORATION */
+.user-name { color: #58a6ff; }
+.text-muted { color: #8b949e; font-size: 12px; }
+
+.qty-badge {
+    background: #30363d;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.table-badge {
+    color: #58a6ff;
+    font-weight: bold;
+}
+
+/* ACTION */
+.action-column { text-align: center; }
+
+.btn-done {
+    display: inline-block;
+    background: #238636; /* Hijau GitHub */
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-done:hover { background: #2ea043; }
+
+.status-label {
+    color: #8b949e;
+    font-style: italic;
+    font-size: 13px;
+}

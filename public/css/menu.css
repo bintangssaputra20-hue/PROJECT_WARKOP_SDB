@@ -1,0 +1,496 @@
+/* ============================================================
+   RESET & THEME (GITHUB DARK INSPIRED BY ADMIN DASHBOARD)
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0d1117; /* Hitam pekat sesuai dashboard admin */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #e6edf3;
+}
+
+/* ============================================================
+   FRAME HP (KEPALA DINGIN, TAMPILAN GAHAR)
+   ============================================================ */
+.phone-frame {
+    width: 390px;
+    height: 100vh;
+    background: #0d1117; /* Latar gelap pekat */
+    border-radius: 35px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 8px solid #30363d; /* Border metalik sesuai dashboard */
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+/* SCROLLBAR CUSTOM */
+.phone-frame::-webkit-scrollbar {
+    width: 5px;
+}
+
+.phone-frame::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container {
+    padding: 18px;
+    /* Tambah padding bawah supaya menu paling bawah 
+       bisa di-scroll melewati tinggi popup */
+    padding-bottom: 380px; 
+}
+
+/* ============================================================
+   HEADER (WARNA BIRU TUA ADMIN)
+   ============================================================ */
+.header {
+    background: #0a192f; /* Biru tua gelap sesuai header admin */
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 18px;
+    color: white;
+    border: 1px solid #30363d;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    background: #58a6ff; /* Aksen biru cerah dashboard */
+    color: #0d1117;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.back-btn,
+.icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #161b22;
+    color: #58a6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid #30363d;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    background: #0d1117;
+    color: #e6edf3;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #58a6ff;
+    outline: none;
+}
+
+/* ============================================================
+   BANNER
+   ============================================================ */
+.banner {
+    background: linear-gradient(135deg, #0d1117, #161b22);
+    border: 1px solid #30363d;
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 18px;
+    color: white;
+}
+
+.banner .badge {
+    color: #58a6ff;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.banner h3 {
+    color: #58a6ff;
+    margin-top: 5px;
+}
+
+.banner p {
+    color: #8b949e;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.banner button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    background: #58a6ff;
+    color: #0d1117;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.banner button:hover {
+    background: #e6edf3;
+}
+
+/* ============================================================
+   JUDUL & FILTER
+   ============================================================ */
+.judul {
+    color: #e6edf3;
+    margin-bottom: 15px;
+}
+
+.slider {
+    overflow-x: auto;
+    margin-bottom: 18px;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-box {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-filter {
+    min-width: 110px;
+    padding: 12px;
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    background: #161b22;
+    color: #8b949e;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.btn-filter:hover {
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+
+.btn-filter.aktif {
+    background: #58a6ff;
+    color: #0d1117;
+    border-color: #58a6ff;
+}
+
+/* ============================================================
+   CARD MENU
+   ============================================================ */
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card {
+    background: #161b22; /* Hitam abu-abu sesuai button admin */
+    border-radius: 25px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e6edf3;
+    border: 1px solid #30363d;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    border-color: #58a6ff;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0d1117, #30363d);
+    position: relative;
+    flex-shrink: 0;
+    border: 1px solid #30363d;
+}
+
+.rating {
+    position: absolute;
+    bottom: -10px;
+    left: 8px;
+    background: #58a6ff;
+    color: #0d1117;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.info {
+    flex: 1;
+}
+
+.info b {
+    font-size: 16px;
+    color: #58a6ff;
+}
+
+.info p {
+    font-size: 12px;
+    color: #8b949e;
+    margin: 4px 0;
+}
+
+.harga {
+    font-weight: bold;
+    font-size: 15px;
+    color: #e6edf3;
+}
+
+/* ============================================================
+   BUTTON TAMBAH
+   ============================================================ */
+.btn-tambah {
+    background: #161b22;
+    color: #58a6ff;
+    border: 1px solid #58a6ff;
+    padding: 12px 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-tambah:hover {
+    background: #58a6ff;
+    color: #0d1117;
+}
+
+/* ============================================================
+   CART POPUP (REFINED & FIXED)
+   ============================================================ */
+.cart-popup {
+    position: fixed;
+    bottom: -100%; /* Sembunyi di bawah */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px; /* Ukuran pas frame HP */
+    background: #e6edf3; 
+    border-radius: 25px 25px 0 0;
+    padding: 20px;
+    z-index: 9999; /* Pastikan paling atas */
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Batasi tinggi popup agar tidak menutupi seluruh layar */
+    max-height: 60vh; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+}
+
+.cart-popup.show {
+    bottom: 0;
+}
+
+/* Header Popup */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.cart-header h3 {
+    color: #0a192f;
+    font-size: 18px;
+}
+
+#closeCart {
+    font-size: 20px;
+    cursor: pointer;
+    color: #30363d;
+    padding: 5px;
+}
+
+/* AREA SCROLL ITEM DI DALAM POPUP */
+#cartItems {
+    /* Set tinggi maksimal agar hanya muat sekitar 2 menu */
+    /* Jika kurang pas, bisa naik/turunkan angkanya antara 130px - 150px */
+    max-height: 145px; 
+    
+    overflow-y: auto; /* Munculkan scrollbar kalau item lebih dari 2 */
+    margin-top: 10px;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Biar scrollbar-nya tipis dan rapi sesuai tema dark */
+#cartItems::-webkit-scrollbar {
+    width: 4px;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+/* ITEM DALAM KERANJANG - Perbaikan layout qty */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #d0d7de;
+    gap: 10px;
+}
+
+.cart-info {
+    flex: 2; /* Kasih ruang lebih buat nama menu */
+}
+
+.cart-info b {
+    color: #0d1117;
+    font-size: 14px;
+    display: block;
+}
+
+.cart-info p {
+    color: #57606a;
+    font-size: 11px;
+}
+
+/* Kotak Aksi (Tombol - + dan Angka) */
+.cart-action {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cart-action button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 8px;
+    background: #0a192f;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-action span {
+    color: #0d1117;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.subtotal {
+    flex: 1.2;
+    text-align: right;
+    color: #0d1117;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Footer Popup */
+.cart-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px solid #d0d7de;
+}
+
+.grand-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0d1117;
+    margin-bottom: 15px;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #0a192f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* FIX: Mencegah body scroll saat popup aktif (Optional) */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* ============================================================
+   CHECKOUT & FOOTER
+   ============================================================ */
+.grand-total {
+    color: #0d1117;
+    font-weight: 800;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 14px;
+    background: #0a192f; /* Biru tua admin */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-checkout:hover {
+    background: #58a6ff;
+    color: #0d1117;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:500px){
+    body { padding: 0; }
+    .phone-frame { width: 100%; border: none; border-radius: 0; }
+    .cart-popup { width: 100%; }
+}
