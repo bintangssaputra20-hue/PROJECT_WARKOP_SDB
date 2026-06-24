@@ -89,3 +89,26 @@ body{
     text-align:center;
     font-size:14px;
 }
+.alert-error {
+    background: #dc2626;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #4d9fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    color: white;
+}
