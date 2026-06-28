@@ -72,7 +72,7 @@
         <p>
             by Bintang Saputra 20240801231, 
             M. Hafidz Zafaran 20240801110, 
-            Anggiant Dwi Raka 20240801231120
+            Anggiant Dwi Raka 20240801120
         </p>
 
         <p>

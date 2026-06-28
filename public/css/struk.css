@@ -1,0 +1,84 @@
+body {
+    background: #0d1117;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.struk-card {
+    background: white;
+    color: #333;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.struk-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 15px;
+    font-size: 14px;
+}
+
+.no-meja-section {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.no-meja-section h1 {
+    font-size: 60px;
+    margin: 10px 0;
+}
+
+.detail-pesanan {
+    padding: 20px 0;
+}
+
+.item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.nama-menu {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.jumlah {
+    color: #666;
+    font-size: 14px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-kembali {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background: #161b22;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}

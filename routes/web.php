@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\MenuCustController;
 use App\Http\controllers\PenjualanController;
+use App\Http\Controllers\CheckoutController;
 
 // Rute untuk halaman utama (Landing Page)
 Route::get('/', function () {
@@ -57,3 +58,7 @@ Route::get('/menu', [MenuCustController::class, 'index']);
 
 // route data penjualan
 Route::get('/data-penjualan', [PenjualanController::class, 'index']);
+
+Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::post('/checkout/proses', [CheckoutController::class, 'store']);
+Route::get('/halaman-struk', [CheckoutController::class, 'struk']);
