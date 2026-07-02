@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session; // Memanggil fitur Session Laravel
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash; // WAJIB TAMBAH INI UNTUK BACA ENKRIPSI
 
 class AdminController extends Controller
 {
@@ -17,16 +18,15 @@ class AdminController extends Controller
     // Memproses data yang diketik di form login
     public function authenticate(Request $request)
     {
-        // Mencari admin di database berdasarkan inputan form
+        // 1. Cari admin berdasarkan username-nya saja dulu
         $admin = DB::table('admin')
             ->where('username', $request->username)
-            ->where('password', $request->password)
             ->first();
 
-        // Jika data admin ditemukan (Login Sukses)
-        if ($admin) {
+        // 2. Jika username ketemu, cocokkan password inputan dengan password hash di database
+        if ($admin && Hash::check($request->password, $admin->password)) {
             
-            // Simpan data ke Session Laravel
+            // Login Sukses: Simpan data ke Session Laravel
             Session::put('admin_id', $admin->id_admin);
             Session::put('username', $admin->username);
             Session::put('nama_user', $admin->nama_user);
@@ -35,7 +35,7 @@ class AdminController extends Controller
             return redirect('/dashboard-admin');
             
         } else {
-            // Jika gagal, kembalikan ke halaman login dengan membawa pesan error
+            // Jika gagal (username nggak ada ATAU password salah)
             return back()->with('error', 'Username atau Password salah!');
         }
     }

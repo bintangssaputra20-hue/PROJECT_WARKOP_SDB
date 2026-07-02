@@ -20,14 +20,11 @@
     </header>
 
     <main class="container">
-        <div class="filter-section">
-            <a href="/pesanan?filter=belum selesai" class="btn-filter {{ $filter == 'belum selesai' ? 'active' : '' }}">
-                <i class="fas fa-clock"></i> Belum Selesai
-            </a>
-            <a href="/pesanan?filter=selesai" class="btn-filter {{ $filter == 'selesai' ? 'active' : '' }}">
-                <i class="fas fa-check-circle"></i> Selesai
-            </a>
-        </div>
+    <div class="filter-section">
+        <a href="/pesanan/belum-selesai" class="btn-filter {{ $filter == 'belum selesai' ? 'active' : '' }}">
+            <i class="fas fa-clock"></i> Belum Selesai
+        </a>
+    </div>
 
         <div class="table-card">
             <table>
@@ -43,9 +40,9 @@
                 </thead>
                 <tbody>
                     {{-- Loop data jauh lebih bersih --}}
-                    @forelse($data_pesanan as $row)
+                    @forelse($pesanan as $row)
                         <tr>
-                            <td class="text-muted">#{{ $row->id_pesanan }}</td>
+                            <td class="text-muted">INV-{{ $row->id_transaksi }}</td>
                             <td><strong class="user-name">{{ $row->nama_user }}</strong></td>
                             
                             {{-- {!! !!} digunakan agar <br> dari MySQL terproses sebagai HTML --}}
@@ -55,16 +52,16 @@
                             
                             <td><span class="qty-badge">{{ $row->total_qty }} Porsi</span></td>
                             <td><span class="table-badge">Meja {{ $row->no_meja }}</span></td>
-                            <td class="action-column">
+                            <td class="action-column" style="text-align: center;">
                                 @if($row->status_pesanan == 'belum selesai')
-                                    <a href="/pesanan/selesai/{{ $row->nama_user }}/{{ $row->no_meja }}" class="btn-done">Selesai</a>
+                                    <a href="/pesanan/selesai/{{ $row->id_transaksi }}" class="btn-done">Selesai</a>
                                 @else
                                     <span class="status-label">Selesai</span>
                                 @endif
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="6" style="text-align:center;">Data tidak ditemukan</td></tr>
+                        <tr><td colspan="6" style="text-align:center; padding: 20px;">Belum ada antrean pesanan.</td></tr>
                     @endforelse
                 </tbody>
             </table>

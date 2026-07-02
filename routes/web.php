@@ -5,10 +5,10 @@ use App\Http\Controllers\StokBarangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\MenuCustController;
-use App\Http\controllers\PenjualanController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\CheckoutController;
 
-// Rute untuk halaman utama (Landing Page)
+// Rute untuk halaman utama
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,47 +18,36 @@ Route::get('/login', [AdminController::class, 'index']);
 Route::post('/login', [AdminController::class, 'authenticate']);
 Route::get('/logout', [AdminController::class, 'logout']);
 
-
-// --- RUTE DASHBOARD (Diupdate) ---
+// --- RUTE DASHBOARD ---
 Route::get('/dashboard-admin', function () {
-    // Cek apakah admin sudah login (session admin_id ada isinya)
     if (!session()->has('admin_id')) {
         return redirect('/login')->with('error', 'Silakan login terlebih dahulu!');
     }
-
-    // Mengambil nama user langsung dari Session
     return view('dashboard_admin', [
         'nama_admin' => session('nama_user') 
     ]);
 });
 
+// --- RUTE STOK BARANG ---
 Route::get('/stok-barang', [StokBarangController::class, 'index']);
-
-// Rute untuk menampilkan form tambah menu
 Route::get('/tambah-menu', [StokBarangController::class, 'create']);
-
-// Rute untuk memproses pengiriman data dari form
 Route::post('/tambah-menu', [StokBarangController::class, 'store']);
-
-// Rute untuk menampilkan form edit (menerima parameter {id})
 Route::get('/edit-menu/{id}', [StokBarangController::class, 'edit']);
-
-// Rute untuk memproses pengiriman data update
 Route::post('/edit-menu/{id}', [StokBarangController::class, 'update']);
-
-// Rute untuk memproses penghapusan data
 Route::get('/hapus-menu/{id}', [StokBarangController::class, 'destroy']);
 
-// rute pesanan
+// --- RUTE PESANAN ---
 Route::get('/pesanan', [PesananController::class, 'index']);
-Route::get('/pesanan/selesai/{nama}/{meja}', [PesananController::class, 'selesai']);
+Route::get('/pesanan/selesai/{id_transaksi}', [PesananController::class, 'selesai']);
 
-//route menu
+// --- RUTE MENU CUSTOMER ---
 Route::get('/menu', [MenuCustController::class, 'index']);
 
-// route data penjualan
+// --- RUTE DATA PENJUALAN ---
 Route::get('/data-penjualan', [PenjualanController::class, 'index']);
 
-Route::get('/checkout', [CheckoutController::class, 'index']);
-Route::post('/checkout/proses', [CheckoutController::class, 'store']);
+
+// Kalau lu butuh halaman checkout, pake GET. Kalau buat proses bayar, pake POST.
+Route::get('/checkout', [CheckoutController::class, 'index']); 
+Route::post('/checkout', [CheckoutController::class, 'store']); // Ganti dari /checkout/proses jadi /checkout
 Route::get('/halaman-struk', [CheckoutController::class, 'struk']);

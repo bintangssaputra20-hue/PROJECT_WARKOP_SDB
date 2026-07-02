@@ -3,67 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
-    // 1. FUNGSI UNTUK MENAMPILKAN HALAMAN CHECKOUT (Tetap Harus Ada)
-    public function index()
-    {
-        return view('checkout');
-    }
-
-    // 2. FUNGSI UNTUK MENYIMPAN DATA PESANAN (Tetap Harus Ada & Sudah Kebal)
     public function store(Request $request)
     {
-        $subtotal = $request->total_harga / 1.1;
+        // Pastikan variabel 'keranjang' terkirim dari frontend
+        if (!$request->has('keranjang')) {
+            return "ERROR: Data 'keranjang' tidak ditemukan. Pastikan JS lu mengirim field dengan nama 'keranjang'";
+        }
 
-        // Simpan ke tabel transaksi & langsung tangkap ID-nya
+        $keranjang = json_decode($request->keranjang, true);
+
+        // Simpan ke tabel transaksi
         $id_transaksi = DB::table('transaksi')->insertGetId([
             'no_meja'          => $request->no_meja,
-            'metode_bayar'     => $request->metode_bayar,
+            'nama_user'        => $request->nama_user,
             'total_harga'      => $request->total_harga,
             'status_transaksi' => 'Lunas',
-            'nama_user'        => $request->nama_user,
-            'subtotal'         => $subtotal
+            'created_at'       => now(),
         ]);
 
-        $detail_pesanan = json_decode($request->detail_pesanan, true);
-
-        if (is_array($detail_pesanan)) {
-            foreach ($detail_pesanan as $item) {
+        // Simpan detail pesanan
+        if ($keranjang) {
+            foreach ($keranjang as $item) {
                 DB::table('pesanan')->insert([
-                    'no_meja'        => $request->no_meja,
-                    'nama_user'      => $request->nama_user,
-                    'nama_menu'      => $item['nama'],
+                    'id_transaksi'   => $id_transaksi,
+                    'id_menu'        => $item['id'],
                     'jumlah'         => $item['qty'],
+                    'harga_satuan'   => $item['harga'],
                     'status_pesanan' => 'belum selesai',
-                    'id_transaksi'   => $id_transaksi
+                    'created_at'     => now(),
                 ]);
             }
         }
 
-        return response()->json(['status' => 'success']);
-    }
-
-    // 3. FUNGSI BARU UNTUK STRUK (Ditaruh di paling bawah sebelum penutup class)
-    public function struk()
-    {
-        // Ambil transaksi terakhir 
-        $transaksi = DB::table('transaksi')
-            ->orderBy('id_transaksi', 'desc')
-            ->first();
-
-        if (!$transaksi) {
-            return redirect('/menu')->with('error', 'Data transaksi tidak ditemukan');
-        }
-
-        // Ambil data pesanan yang terikat dengan id_transaksi tersebut
-        $pesanan = DB::table('pesanan')
-            ->where('id_transaksi', $transaksi->id_transaksi)
-            ->get();
-
-        // Lempar data ke resources/views/halaman_struk.blade.php
-        return view('halaman_struk', compact('transaksi', 'pesanan'));
+        return redirect('/menu')->with('success', 'Transaksi berhasil!');
     }
 }
