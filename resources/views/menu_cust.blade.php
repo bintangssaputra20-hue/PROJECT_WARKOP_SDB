@@ -66,7 +66,6 @@
 </div>
 
 <script>
-// RAW Syntax dari Blade untuk merender JSON dengan aman
 const dataMenu = {!! $json_menu !!};
 let cart = [];
 
@@ -76,7 +75,7 @@ function pindahKeCheckout() {
         return;
     }
     localStorage.setItem('keranjang_warkop', JSON.stringify(cart));
-    // Link mengarah ke rute checkout Laravel
+    // Ini sekarang AMAN karena rute GET /checkout sudah kita balikin
     window.location.href = '/checkout';
 }
 
@@ -101,23 +100,24 @@ function filterMenu(kategori, btnId) {
         const row = `
         <div class="card">
             <div class="img">
-                <div class="rating"> ⭐ ${item.rating} </div>
+                <div class="rating"> ⭐ ${item.rating || '5.0'} </div>
             </div>
             <div class="info">
                 <b>${item.nama_menu}</b>
                 <p>${item.deskripsi ?? '-'}</p>
                 <span class="harga">Rp ${parseInt(item.harga).toLocaleString('id-ID')}</span>
             </div>
-            <button class="btn-tambah" onclick="tambahKeranjang('${item.nama_menu}', ${item.harga})"> Tambah </button>
+            <button class="btn-tambah" onclick="tambahKeranjang(${item.id_menu}, '${item.nama_menu}', ${item.harga})"> Tambah </button>
         </div>`;
         listContainer.innerHTML += row;
     });
 }
 
-function tambahKeranjang(nama, harga){
-    const existing = cart.find(item => item.nama === nama);
+// PERBAIKAN: Parameter 'id' ditambahin
+function tambahKeranjang(id, nama, harga){
+    const existing = cart.find(item => item.id === id);
     if(existing){ existing.qty++; } 
-    else { cart.push({ nama: nama, harga: harga, qty: 1 }); }
+    else { cart.push({ id: id, nama: nama, harga: harga, qty: 1 }); }
     renderCart();
 }
 

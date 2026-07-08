@@ -149,22 +149,22 @@ btnKonfirmasi.addEventListener("click", function() {
     const keranjang = JSON.parse(localStorage.getItem("keranjang_warkop")) || [];
     const totalHargaRaw = document.getElementById("total_harga").innerText.replace(/[^0-9]/g, "");
 
-    // FETCH MENGARAH KE ROUTE LARAVEL & MENGIRIM TOKEN KEAMANAN
+    // FETCH MENGARAH KE ROUTE LARAVEL (GANTI BAGIAN INI SAJA DI CHECKOUT LU)
     fetch('/checkout/proses', {
         method: 'POST',
         headers: { 
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json', // Pakai JSON biar rapi
             'X-CSRF-TOKEN': csrfToken 
         },
-        body: new URLSearchParams({
+        body: JSON.stringify({
             'no_meja': mejaUser,
             'nama_user': namaUser,
             'metode_bayar': metode,
             'total_harga': totalHargaRaw,
-            'detail_pesanan': JSON.stringify(keranjang)
+            'detail_pesanan': keranjang // Kirim langsung array keranjangnya
         })
     });
-
+    
     const imgInstruksi = document.getElementById("img-instruksi");
     const teksInstruksi = document.getElementById("teks-instruksi");
 

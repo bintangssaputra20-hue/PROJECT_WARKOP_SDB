@@ -20,11 +20,19 @@
     </header>
 
     <main class="container">
-    <div class="filter-section">
-        <a href="/pesanan/belum-selesai" class="btn-filter {{ $filter == 'belum selesai' ? 'active' : '' }}">
-            <i class="fas fa-clock"></i> Belum Selesai
-        </a>
-    </div>
+    <div class="tabs-container" style="display: flex; gap: 15px; margin-bottom: 20px;">
+    <a href="/pesanan?status=belum selesai" 
+       class="btn {{ $status == 'belum selesai' ? 'btn-primary' : 'btn-secondary' }}" 
+       style="padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; background-color: {{ $status == 'belum selesai' ? '#0d6efd' : '#2c3034' }}; border: 1px solid #0d6efd;">
+        🕒 Belum Selesai
+    </a>
+    
+    <a href="/pesanan?status=selesai" 
+       class="btn {{ $status == 'selesai' ? 'btn-primary' : 'btn-secondary' }}" 
+       style="padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; background-color: {{ $status == 'selesai' ? '#0d6efd' : '#2c3034' }}; border: 1px solid #0d6efd;">
+        ✅ Selesai
+    </a>
+</div>
 
         <div class="table-card">
             <table>
